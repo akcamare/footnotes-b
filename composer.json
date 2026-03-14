@@ -1,5 +1,5 @@
 {
-  "name": "drupal/footnotes",
+  "name": "chamil/footnotes",
   "description": "Add automatically numbered footnotes to your posts.",
   "type": "drupal-module",
   "homepage": "https://drupal.org/project/footnotes",
