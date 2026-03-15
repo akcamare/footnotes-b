@@ -132,6 +132,22 @@ function footnotes_update_10002() {
 }
 
 /**
+ * Ensure that footer dialog has its default set to false.
+ */
+function footnotes_update_10003() {
+  $format_configs = \Drupal::configFactory()->listAll('filter.format.');
+  foreach ($format_configs as $format_config) {
+    $config = \Drupal::configFactory()->getEditable($format_config);
+    $settings = $config->get('filters.filter_footnotes.settings');
+    if (!isset($settings['footnotes_dialog'])) {
+      $settings['footnotes_dialog'] = FALSE;
+      $config->set('filters.filter_footnotes.settings', $settings);
+      $config->save();
+    }
+  }
+}
+
+/**
  * Ensure the footnote text format and editor config are installed.
  */
 function footnotes_update_10004() {
@@ -158,5 +174,4 @@ function footnotes_update_10004() {
 
   return t('Footnote text format already exists, skipping.');
 }
-
 
